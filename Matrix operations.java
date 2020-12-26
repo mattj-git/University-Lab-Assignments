@@ -1,29 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-
-/**
- *
- * @author jianfeng
- */
 public class Matrix {
-	
-	//comment
-    
+	    
 	private int[][]  matrixData;
 	private int    rowsNum;	
 	private int    colsNum;	
 	
 	public Matrix( int row, int col ) 
 	{   
-		/*
-		* constructs a row-by-col matrix with
-		* all elements equal to 0; if row <= 0, the number of rows of the matrix is set to
-		* 3; likewise, if col <= 0 the number of columns of the matrix is set to 3.		
-		*/
+
 		if (row > 0 && col > 0)    //Deals with the case where both numbers are greater than 0 
 		{
 			this.matrixData = new int[row][col];       //Since all the information given is valid the object is constructed with the given values
@@ -69,10 +53,7 @@ public class Matrix {
 	public Matrix( int[][] table) 
 	{	
 
-		/*
-		* constructs a matrix out of the two dimensional array table, with the same number of rows, columns, and the same
-		* element in each position as array table.
-		*/ 
+
 		
 		int i = 0;   //2 iterating variables
 		int o = 0;
@@ -94,12 +75,7 @@ public class Matrix {
 	
 	public int getElement(int i, int j) throws IndexOutOfBoundsException
 	{ 	
-		/*
-		* returns the element on row i and column j of this matrix; 
-		* it throws an exception (IndexOutOfBoundsException) if any of indexes i and j is not in the required range 
-		* (rows and columns indexing starts with 0)
-		*  the detail message of the exception should read: "Invalid indexes".
-		*/
+
 		if (i >= this.rowsNum || i < 0 || j < 0 || j >= this.colsNum)                //Throws the exception if either i or j is too large and is not within the range of the matrix or if it is negative (as that wouldn't make sense on a matrix)
 		{
 			throw new IndexOutOfBoundsException("Invalid indexes.");
@@ -112,7 +88,6 @@ public class Matrix {
         
     public boolean setElement(int x, int i, int j){ 
             
-        /* the detail message of the exception should read: "Invalid indexes" */
     	if (i>= 0 && i < this.rowsNum && j < this.colsNum && j>= 0)        //only runs the code if the index is valid (not a negative number or not larger than the given matrix)         
     	{
     		this.matrixData[i][j] = x;   //Sets the value accordingly 
@@ -124,7 +99,6 @@ public class Matrix {
 
     public Matrix copy(){ 
         
-    	/* fix the code and write your implementation below */
 		Matrix copy = new Matrix (this.matrixData);     //Defines a new matrix (copy) using the matrix data array of the "this/ current" matrix as a table for the function "matrix"
 				
 		
@@ -134,7 +108,6 @@ public class Matrix {
 	public void addTo( Matrix m ) throws ArithmeticException
 	{
 		
-		/* the detail message of the exception should read: "Invalid operation". */
 		
 		
 		if (this.colsNum != m.colsNum || this.rowsNum != m.rowsNum)  //Throws the exception if the matrices aren't the exact same dimensions
@@ -157,9 +130,7 @@ public class Matrix {
 	
     public Matrix subMatrix(int i, int j) throws ArithmeticException{ 
         
-		/* The exception detail message should read: "Submatrix not defined"*/
     	
-    	/* fix the code and write your implementation below */
 		Matrix subM = new Matrix (i+1,j+1);                   //Defines a new matrix with the requested size
 				
 		if (0<= i && this.rowsNum >= i && this.colsNum >= j && 0<= j)          // Only runs the code if the values i and j are less than or equal to the dimensions of the original matrix as a sub matrix can't be larger than the original one
@@ -187,19 +158,16 @@ public class Matrix {
         
     public int getsizeofrows(){ 
            
-		/* update below return */
 		return this.rowsNum;  //Returns the number of rows
     }
         
     public int getsizeofcols(){
 		
-		/* update below return */
         return this.colsNum;   //Returns the number of columns
     }
         
     public boolean isUpperTr(){
             
-		/* write your implementation here and update return accordingly */
     	int i = 0;  
 		int o = 0;
 				
