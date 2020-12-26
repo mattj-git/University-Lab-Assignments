@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 #include<math.h>
-#include "Questions.h"
 
 
 void add_vectors(double vector1[],double vector2[],double vector3[],int size)  //This function adds 2 vectors and stores the sum in vector 3, given that both vectors have the same size
