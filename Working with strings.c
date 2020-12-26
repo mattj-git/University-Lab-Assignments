@@ -32,3 +32,35 @@ void string_copy(const char source[], char destination[], int n){ //This  functi
 	destination[n-1] = '\0';          //Adds the null character to the end of each string
 }
 
+
+char *my_strcat(const char * const str1, const char * const str2){  //This function concactenates the 2 strings and assigns new memory to hold the concactenated string
+
+	char *z = NULL;
+	
+
+	int str1_length = strlen(str1);         //Next 2 lines are variables that store the length of each string
+	int str2_length = strlen(str2);
+
+	int i = 0;         //Iterating variables for, for loops
+	int a = 0;
+
+	z = malloc((str1_length + str2_length - 1)*4);       //This assigns the pointer z the required amount of bytes each char is 4 bytes so in total its both bytes added together (subtracted 1 as we only need space for 1 null character not 2) and then multiplied by 4
+
+	for (i = 0; i < (str1_length); i++)          //This for loop goes through all of str1
+	{
+		*(z + i) = str1[i];                      //It adds it to z starting at the beginning (which is what z is pointing to) and
+	}
+
+	for (a = 0; a < (str2_length); a++)          //This for loop goes through all of str2
+	{
+		*(z + i + a) = str2[a];                 //But it has to start where the first string ended so I added i as well as a
+
+	}
+
+	*(z + i + a ) = '\0' ;                   //This just adds the null character to the very end of the string
+
+
+
+	return z;
+	
+}
