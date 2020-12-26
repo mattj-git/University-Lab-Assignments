@@ -1,18 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "Questions.h"
 #include "math.h"
 
 double fabs();
 
-int is_diag_dom(int mat[][N2]){
+int is_diag_dom(int mat[][N2]){ //This function determines if the given matrix (a square matrix) is diagonally dominant (ie.if the absolute value of the diagonal element on each row is greater 
+	                       //than the sum of the absolute values of the rest of the elements on that row, for each row, then the matrix is diagonally dominant).
 
-    //this is the flag that is returned to tell whether the mat is diagonally
 	int isDiag=0;
 	
-	//write your code below
-	//Return 1 if the matrix is diagonally dominant and 0 otherwise
+	//Returns 1 if the matrix is diagonally dominant and 0 otherwise
 	
 	int row = 0; 					// 	row and column are just variables that I use to iterate through the respective sections of the matrix
 	int column = 0;
@@ -44,3 +42,33 @@ int is_diag_dom(int mat[][N2]){
 
     return isDiag = 1;
 }
+
+
+void diag_scan(int mat [][N3], int arr []){  //This function constructs an array of all elements in a matrix in a diagonal scan order starting at the top left corner
+					    //eg. if the matrix was { {1,12,13,49}, {5,16,17,81}, {9,10,11,20}, {2,45,19,14} }, the array returned would be {1,5,12,9,16,13,2,10,17,49,45,11,81,19,20,14}
+						  
+						   //When working on this question I realized that you're essentially listing a changing diagonal which moves from left to right like a "wave"
+	int i = 0;                                // (cont.) the coordinates of all the entries on the diagonal always add up to a constant value eg.first wave all coordinates add to 0 (only top left entry), the second wave they all added too 1 so 2 entries ([1,0] and [0,1])
+	
+	int column = 0;							  //(cont.) the i variable iterates from the first "wave" to (wave zero) all the way up to wave 2(N3-1)
+	
+	int row = 0;                     //The variable rows goes through the rows, and column iterates through the columns
+	
+	int index = 0;                   //This is used as an index for the output array
+	for (i = 0; i <= (N3-1)*2 ; i++)          //This for loop repeats the code for each "wave"
+	{
+		for (column = 0; column < N3; column++)   //This for loop iterates through each column
+		{
+			for (row = 0; row < N3; row++)        //This for loop iterates through the columns
+			{
+				if ( (column + row) == i)         //This if statement adds every entry found on the wave (the entries whose coordinates add up to that "wave's" constant value (i)
+				{
+					arr[index ++] = mat[row][column];
+				}
+			}
+		}
+	}
+}
+
+
+
