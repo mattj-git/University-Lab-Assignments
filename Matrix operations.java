@@ -1,11 +1,11 @@
 
-public class Matrix {
+public class Matrix {          //This entire file is based around making a matrix class and numerous methods that would be useful when working with them
 	    
 	private int[][]  matrixData;
 	private int    rowsNum;	
 	private int    colsNum;	
 	
-	public Matrix( int row, int col ) 
+	public Matrix( int row, int col )   //This is a constructor which creates an empty matrix (filled with zeroes) with the defined size
 	{   
 
 		if (row > 0 && col > 0)    //Deals with the case where both numbers are greater than 0 
@@ -50,7 +50,7 @@ public class Matrix {
 
 	}
 	
-	public Matrix( int[][] table) 
+	public Matrix( int[][] table)  //This is another constructor which creates a matrix object based off of a given array
 	{	
 
 
@@ -73,7 +73,7 @@ public class Matrix {
 		this.colsNum = table[1].length;
 	}
 	
-	public int getElement(int i, int j) throws IndexOutOfBoundsException
+	public int getElement(int i, int j) throws IndexOutOfBoundsException  //This method returns the entry whose position is defined by the 2 given integers
 	{ 	
 
 		if (i >= this.rowsNum || i < 0 || j < 0 || j >= this.colsNum)                //Throws the exception if either i or j is too large and is not within the range of the matrix or if it is negative (as that wouldn't make sense on a matrix)
@@ -86,7 +86,7 @@ public class Matrix {
 		}
 	}
         
-    public boolean setElement(int x, int i, int j){ 
+    public boolean setElement(int x, int i, int j){  //This method sets the entry at the given address to the given value
             
     	if (i>= 0 && i < this.rowsNum && j < this.colsNum && j>= 0)        //only runs the code if the index is valid (not a negative number or not larger than the given matrix)         
     	{
@@ -97,7 +97,7 @@ public class Matrix {
     	return false;  //If not the matrix is unchanged and it returns false
     } 
 
-    public Matrix copy(){ 
+    public Matrix copy(){  //This function copies the matrix this method is applied to, to another matrix which occupies a different space in memory
         
 		Matrix copy = new Matrix (this.matrixData);     //Defines a new matrix (copy) using the matrix data array of the "this/ current" matrix as a table for the function "matrix"
 				
@@ -105,7 +105,7 @@ public class Matrix {
         return  copy;  //Returns that matrix
     }    
                 
-	public void addTo( Matrix m ) throws ArithmeticException
+	public void addTo( Matrix m ) throws ArithmeticException //This method adds 2 matrices together (the matrix that the method is applied too is the one that stores the sum, not the matrix the method is given)
 	{
 		
 		
@@ -128,7 +128,7 @@ public class Matrix {
 	
 	}
 	
-    public Matrix subMatrix(int i, int j) throws ArithmeticException{ 
+    public Matrix subMatrix(int i, int j) throws ArithmeticException{   // This method returns a matrix which is a submatrix of the original. The submatrix covers the original matrix up until row i, and up until column j.
         
     	
 		Matrix subM = new Matrix (i+1,j+1);                   //Defines a new matrix with the requested size
@@ -156,17 +156,17 @@ public class Matrix {
         
     }
         
-    public int getsizeofrows(){ 
+    public int getsizeofrows(){   //Returns the number of rows (this is just in case we might want to use this class in another project as all the instance fields are private and this would be the only way to access them)
            
 		return this.rowsNum;  //Returns the number of rows
     }
         
-    public int getsizeofcols(){
+    public int getsizeofcols(){ //identical to the last method just with the columns
 		
         return this.colsNum;   //Returns the number of columns
     }
         
-    public boolean isUpperTr(){
+    public boolean isUpperTr(){  //This method returns a boolean indicating whether the matrix is upper triangular or not.
             
     	int i = 0;  
 		int o = 0;
@@ -189,10 +189,10 @@ public class Matrix {
         return true;    //Returns true if it doesn't find anything thats not 0 below the diagonal
 	}
         
-    public static Matrix sum(Matrix[] matArray) throws ArithmeticException{
+    public static Matrix sum(Matrix[] matArray) throws ArithmeticException{ //This method takes in an array of matrices and returns the sum of all of them
             
             
-        Matrix superMatrix = new Matrix (matArray[0].rowsNum,matArray[0].colsNum);  //Creates a supermatrix with the same dimensions as the entries
+        Matrix superMatrix = new Matrix (matArray[0].rowsNum,matArray[0].colsNum);  //Creates a supermatrix with the same dimensions as the entries (stores the sum of all the matrices)
         
         
         int i = 0;
@@ -209,7 +209,7 @@ public class Matrix {
         return superMatrix; 
     }
         
-	public String toString(  )
+	public String toString(  )    //This method returns a string representing the content of the matrix
 	{
 		String output = new String(); 
         
