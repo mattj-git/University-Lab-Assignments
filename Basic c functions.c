@@ -1,5 +1,5 @@
 
-int Q1_for(){                   //This function along with the next 2 functions adds every number that is a multiple of four and that is between 30 and 1000
+int Q1_for(){                   //This function along with the next 2 functions adds every number that is a multiple of four and that is between 30 and 1000.
 	int sum = 0;
 	
 	int i;                       //This function uses a for loop
@@ -45,7 +45,7 @@ int Q1_do(){
 	return sum;
 }
 //===============================================================================================
-int Q2(int Q2_input){         //This function checks to see if the integer the function was given is 5 digits (returning 1 if it is and 0 if it is not)
+int Q2(int Q2_input){         //This function checks to see if the integer the function was given is 5 digits (returning 1 if it is and 0 if it is not).
 	
 	int IsFiveDigit;
 	
@@ -65,7 +65,7 @@ int Q2(int Q2_input){         //This function checks to see if the integer the f
 }
 //===============================================================================================
 int Q3(float Q3_input){  //This function takes in  a floating point integer grade and converts it to  a GPA. 0 if its between 0-59, 1 if its between 60-69, 2 if its between 70-79,
-			//3 if its between 80-89, and 4 if its between 90-100 (it returns negative 1 if the input is invalid)
+			//3 if its between 80-89, and 4 if its between 90-100 (it returns negative 1 if the input is invalid).
 	
 	float GPA;
 	
@@ -94,7 +94,8 @@ int Q3(float Q3_input){  //This function takes in  a floating point integer grad
 	return GPA;	
 }
 //===============================================================================================
-double Q4(int Q4_input){
+double Q4(int Q4_input){        //This function returns an estimate of pi based on the infinitie series: 4-4/3+4/5-4/7+4/9-4/11..... which continues with that pattern infinitely.
+				//The integer given to the function determines how many terms of that infinite series you add.
 	
 	// this is the varaiable that holds the pi value to return
 	double pi=0;
@@ -118,17 +119,13 @@ double Q4(int Q4_input){
 	return pi;	
 }
 //===============================================================================================
-int Q5(){
+int Q5(){  //This functions counts how many possible right triangles there are given the following conditions: No side may be larger than 400 and side 1 must be less than or equal to side 2.
 	
 	// this is the varaible that holds and the total number of triples to return at the end of the function
 	int totNumTribles=0;
 	
 	
-	/* Do your coding below
-		Use a triple-nested for loop that simply tries all possibilities
-		print each triple on a separate line, 
-		and update the total number of triples if needed
-	*/
+
 	int i = 1;
 	    int a = 0;                       // i,a,b are just variables I used to increment the for loops
 	    int b = 0;
@@ -148,21 +145,16 @@ int Q5(){
 
 
 
-
-
-	//this is the format that you MUST print the found tribles..uncomment this line and fill in the missings to get it working correctly
-	//printf("A triple found: side1=%d, side2=%d, side3=%d\n", ...)
 	
-	//finally you should return the total number of tribles.
 	return totNumTribles;
 }
 //===============================================================================================
-int Q6(int Q6_input, int perfect[]){
+int Q6(int Q6_input, int perfect[]){ //This function determines all the perfect numbers smaller than or equal to the number given to the function
+				     //It stores an array "perfect" which holds all the perfect numbers. It also returns count which is the number of perfect numbers found.
 	
 	
 	
-		//counts is teh variable that should hold the total number of found perfect numbers
-		//you should update it within your code and return it at the end
+		//counts is the variable that holds the total number of found perfect numbers
 	    int counts=0;
 	    int num = 0;
 	    int factor = 0;
@@ -184,16 +176,7 @@ int Q6(int Q6_input, int perfect[]){
 
 	    	}
 
-
-		/*
-		*
-		*perfect is an array that you need to add into it any perfect number you find
-		*which means at the end of this function, the perfect[] array should hold all the found perfect numbers in the range
-		*you do not need to return perfect because as stated in lectures arrays are already passed by reference. so, modifying them will 
-		*autmoatically reflect in the main calling function.
-		*/
-	    
-		
+			
 		
 		
 		
@@ -203,15 +186,12 @@ int Q6(int Q6_input, int perfect[]){
 	
 }
 //===============================================================================================
-int Q7a(int Q7_input){
+int Q7a(int Q7_input){       //This function "flips" the seven digit positive integer that is given to the function.
 	
 	//this is the variable that holds the reversed int.
 	int reversedInt=0;
 	
-	
-	// Do your coding logic here
-	//Hint: Use the division and remainder operators to separate the number into its individual digits.
-	//in this part you can assume the knowledge of the number of digits: seven-digit positive integer
+
 	int i = 0;
 	int digit  = 0;
 	int denominator = 1000000;
@@ -233,7 +213,8 @@ int Q7a(int Q7_input){
 
 		return reversedInt;
 }
-int Q7b(int Q7b_input){
+int Q7b(int Q7b_input){ //This function returns the flipped value of the integer (but in this function it doesn't have ti be 7 digits.
+
 	
 	//this is the variable that holds the reversed int.
 	int reversedInt=0;
