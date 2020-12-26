@@ -1,13 +1,8 @@
 
-#include "Questions.h"
-
-
-
-int Q1_for(){
+int Q1_for(){                   //This function along with the next 2 functions adds every number that is a multiple of four and that is between 30 and 1000
 	int sum = 0;
 	
-	// calculate your sum below..this has to use for loop
-	int i;
+	int i;                       //This function uses a for loop
 	for (i=30;i<=1000;i++){
 		if (i%4 == 0){
 			sum = i + sum;
@@ -19,10 +14,9 @@ int Q1_for(){
 	return sum;
 }
 int Q1_while(){
-	int sum = 0;
+	int sum = 0;             //This functions uses a while loop
 
 
-	// calculate your sum below..this has to use while loop
 	int i=30;
 	while(i<=1000){
 
@@ -35,9 +29,8 @@ int Q1_while(){
 	return sum;
 }
 int Q1_do(){
-	int sum = 0;
+	int sum = 0;                    //This functions uses a while loop along with a do statement      
 	
-	// calculate your sum below..this has to use do-while loop
 	int i = 30;
 	do
 	{
@@ -52,14 +45,12 @@ int Q1_do(){
 	return sum;
 }
 //===============================================================================================
-int Q2(int Q2_input){
+int Q2(int Q2_input){         //This function checks to see if the integer the function was given is 5 digits (returning 1 if it is and 0 if it is not)
 	
-	// this is the flag that is holding whether the input number is 5-digit or not
 	int IsFiveDigit;
 	
-	// Do your coding below to check
 	if( Q2_input < 0){
-		Q2_input = (-1)*Q2_input;             //This is just to make sure its always a positive value, so my if statement can be simple.
+		Q2_input = (-1)*Q2_input;             //This is just to make sure its always a positive value, so my if statements can be simple.
 	}
 
 	if( Q2_input>=10000 && Q2_input<=99999 ){
@@ -69,29 +60,16 @@ int Q2(int Q2_input){
 		IsFiveDigit = 0;
 	}
 
-	            
-	
-	//finally, we must return IsFiveDigit, which must be 1 is the number is five digits and 0 otherwise
+	           	
 	return IsFiveDigit;
 }
 //===============================================================================================
-int Q3(float Q3_input){
+int Q3(float Q3_input){  //This function takes in  a floating point integer grade and converts it to  a GPA. 0 if its between 0-59, 1 if its between 60-69, 2 if its between 70-79,
+			//3 if its between 80-89, and 4 if its between 90-100 (it returns negative 1 if the input is invalid)
 	
-	/* Question 3: 
-	Write a program that takes a student's Q3_input as an input, which is a floating point value,
-	and prints:
-	4 if the Q3_input is in the range 90-100,
-	3 if it is in the range 80-89, 
-	2 if it is in the range 70-79,
-	1 if it is in the range 60-69 and
-	0 if the Q3_input is between 0 and 59.
-	If the Q3_input is not in the range 0-100, the program should print a message to signal an invalid input.
-*/	
-	// this is the varaible that holds the out value to return
 	float GPA;
 	
 	
-	// Do your coding below to calculate the GPA variable value
 	GPA = 0;
 	if (Q3_input<=100 && Q3_input>=90){
 		GPA = 4;
@@ -118,7 +96,7 @@ int Q3(float Q3_input){
 //===============================================================================================
 double Q4(int Q4_input){
 	
-	// this is the varaible that holds the pi value to return
+	// this is the varaiable that holds the pi value to return
 	double pi=0;
 	
 	
