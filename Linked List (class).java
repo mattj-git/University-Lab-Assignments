@@ -1,16 +1,17 @@
 
-public class SLLSet {
-    private int size;
-    private SLLNode head;
+public class SLLSet { //This class and all the methods defined in it are used to implement the idea of a linked list 
+	
+    private int size;  //This instance method represents how many entries are "in" the linked list
+    private SLLNode head; //This defines the "head" or the first entry in the linked list
 
-    public SLLSet() {
+    public SLLSet() { //A constructor method that defines an empty linked list (ie. the size is 0 and the head does not exist
     	
     	this.size = 0;        //Sets the size to 0 (as there are no entries in the linked list)
     	this.head = null;    //Sets the pointer in head to null as the list shouldn't be "going/leading anywhere"
     	
     }
 
-    public SLLSet(int[] sortedArray) {
+    public SLLSet(int[] sortedArray) { //Creates a linked list based on the given array (note: The values are in increasing order with no repetitions) 
         
     	this.size = sortedArray.length;          //Sets the size instance field to what it will be due to the array
     	
@@ -18,23 +19,24 @@ public class SLLSet {
     	
     	int i = 0;
     	
-    	for (i = this.size - 2; i > 0 ; i--)   //This for loop iterates fro the last iteration of the linked list too the first (This is much easier as when creating the linked list you need the next entry available, technically the last entry is the only one you know as it points to nothing)
+    	for (i = this.size - 2; i > 0 ; i--)   //This for loop iterates for the last iteration of the linked list too the first (This is much easier as when creating the linked list you need the next entry available, technically the last entry is the only one you know as it points to nothing)
     	{                                      //For any other entry of the list you'd have the value but you'd have to point to something that you haven't made yet when filling in the next value, which makes this much more difficult to do from the beginning of the list 
     		last_node = new SLLNode(sortedArray[i], last_node);     //In this line you're always updating last_node to be one entry further to the beginning (with the appropriate value), while pointing back to the node you created last time
     	}
     	
-    	this.head = new SLLNode (sortedArray[0], last_node);   //With the for loop I had set up it was just easiest to deal with the head separately and that's what this line is doing (the value must be at index [0], and points to the very last last_node I made in the loop)
+    	this.head = new SLLNode (sortedArray[0], last_node);   //With the for loop I had set up, it was just easiest to deal with the head separately and that's what this line is doing (the value must be at index [0], and points to the very last last_node I made in the loop)
     	}
     	
     	
 
-    public int getSize() {
+    public int getSize() { //This method returns the size of the linked list
     	
     	
     	return this.size ;   //This is fairly simple, I just returned the value that it needs (I realized this was pretty lazy and it made me write a few extra lines in later codes)
     }
 
-    public SLLSet copy() {
+	
+    public SLLSet copy() { // This method returns a copy of the linked list this method is used on (a copy which does not occupy the same space in memory).
         
     	int i = 0;
     	
@@ -53,12 +55,13 @@ public class SLLSet {
         return new SLLSet(values);         //Lastly I plug the list I created into the previous constructor to return the copy
     }
 
-    public boolean isIn(int v) {
+	
+    public boolean isIn(int v) { //This method determines whether the given integer is in the linked list the method is used on
         
-    	int i = 0;
+    	int i = 0; //2 iterating variables used to iterate through for loops
     	int a = 0;
     	
-    	int values[] = new int[this.size];
+    	int values[] = new int[this.size];  
     	
     	SLLNode temp = this.head;
     	
@@ -79,7 +82,7 @@ public class SLLSet {
         return false;
     }
 
-    public void add(int v) {
+    public void add(int v) { //This method adds an element to the linked list (while maintaining the ascending order).
     	if (isIn(v) == false)                 //First I check to see if the value is in the linked list, and if it isn't then the following code runs,and if not nothing happens
     	{
     		
@@ -128,9 +131,9 @@ public class SLLSet {
     	}
     }
 
-    public void remove(int v) {
+    public void remove(int v) {// This method removes the given value from the linked list
     	
-    	if (this.isIn(v))        //Checks to see if the value it wants to remove is in the LL
+    	if (this.isIn(v))        //Checks to see if the value it wants to remove is in the Linked list
     	{
     		SLLNode current = this.head;     //Next 2 lines create storage nodes similar to the last method
     		
@@ -159,7 +162,8 @@ public class SLLSet {
         
     }
 
-    public SLLSet union(SLLSet s) {
+    public SLLSet union(SLLSet s) { //This method returns a linked list which represents the union of the linked list given to the method, and the linked list the method is used on
+	                           //The union contains all values within both the lists
     	
     	if (this.size == 0 || s.size == 0)   //If either LL is empty than this would take care of that case
     	{
@@ -184,7 +188,8 @@ public class SLLSet {
         return s.copy(); //Returns a copy of s (which now represents the union of "this" and s)
     }
 
-    public SLLSet intersection(SLLSet s) {
+    public SLLSet intersection(SLLSet s) { //This method returns a linked list which represents the intersection of the linked list given to the method, and the linked list the method is used on
+	                                  //The intersection contains all values that are within both the linked lists
     	
     	SLLNode current = s.head; //Node used to iterate through the LL
     	    	
@@ -202,9 +207,10 @@ public class SLLSet {
         return s; //Returns s
     }
 
-    public SLLSet difference(SLLSet s) {
+    public SLLSet difference(SLLSet s) {  //This method returns the difference of the linked list the method is used on and the linked list given to the method
+	    				 //The difference is all the values which are in the linked list the method is used on, and NOT in the linked list given to the method (in brackets)
         
-    	SLLNode current = this.head; //Node used to iterate through the LL
+    	SLLNode current = this.head; //Node used to iterate through the linked list
     	
     	while ( current != null) // While loop that goes through the LL
     	{
@@ -218,10 +224,10 @@ public class SLLSet {
     	
     
     	
-        return this;   //Returns this
+        return this;   //Returns this linked list
     }
 
-    public static SLLSet union(SLLSet[] sArray) {  
+    public static SLLSet union(SLLSet[] sArray) {   //This method returns a linked list representing the union of every linked list in the array
         SLLSet ss = new SLLSet();
         
         int i = 0;     //Iterating variable
@@ -235,8 +241,7 @@ public class SLLSet {
         return ss; //Returns the final set
     }
 
-    @Override
-    public String toString() {
+    public String toString() { //This method returns a string representation of the linked list 
     	String output = new String();          //Creates a new empty output string
     	 
     	int i  = 0;         //Iterating variable           
