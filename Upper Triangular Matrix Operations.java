@@ -1,19 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-/**
- *
- * @author jianfeng
- */
-public class UpperTriangularMatrix {
+public class UpperTriangularMatrix { //This class is used to represent upper triangular matrices and uses some of the methods defined in the "matrix operations" file.
     private int n;
     private int[] array;
     
-    public UpperTriangularMatrix(int n){
+    public UpperTriangularMatrix(int n){  //This counstructor creates an empty (all zero) upper triangular matrix with the given size (or a size of 1 if a negative number is given)
         
     	if (n <= 0)                    //If the dimension value is invalid it is changed to 1 as instructed
     	{
@@ -29,7 +18,7 @@ public class UpperTriangularMatrix {
         
     }
     
-    public UpperTriangularMatrix(Matrix upTriM) throws IllegalArgumentException{
+    public UpperTriangularMatrix(Matrix upTriM) throws IllegalArgumentException{ //This method creates an UpperTriangularMatrix object from a Matrix object (If the matrix is upper triangular)
     
     if (upTriM.isUpperTr() == true) //Checks to see if the input matrix is upper triangular
     {
@@ -61,17 +50,15 @@ public class UpperTriangularMatrix {
         
     }    
         
-    public int getDim(){
+    public int getDim(){  //A method that returns the dimensions of the matrix
         
 		
-		/* write your implementation here and update return accordingly */
         return this.n;   //Just returns the dimension
     }
     
-    public int getElement(int i, int j) throws IndexOutOfBoundsException{
+    public int getElement(int i, int j) throws IndexOutOfBoundsException{ //A method that takes in the location of an entry and returns the value of that entry
 		
 		
- 		/* write your implementation here and update return accordingly */
     	if ( i < 0 || this.n <= i || this.n <= j || j < 0)               //Throws the exception case if the values of i and j are too large, or below 0
     		throw new IndexOutOfBoundsException("Invalid indexes");
     	
@@ -94,7 +81,7 @@ public class UpperTriangularMatrix {
     	}
     }
     
-    public void setElement(int x, int i, int j) throws IndexOutOfBoundsException,IllegalArgumentException{
+    public void setElement(int x, int i, int j) throws IndexOutOfBoundsException,IllegalArgumentException{ //Takes in the location of an entry and sets the value of that entry to x
        
     	if ( 0>i || this.n <= i || this.n <= j || 0>j)                    //These 2 if statements throw the necessary exception cases
     		throw new IndexOutOfBoundsException("Invalid indexes");   //This one if i and j are invalid
@@ -116,7 +103,7 @@ public class UpperTriangularMatrix {
     	}
     }
     
-    public Matrix fullMatrix(){
+    public Matrix fullMatrix(){  //Converts the UpperTriangularMatrix the method is used on to an object of type Matrix 
 
         Matrix full= new Matrix(this.n,this.n); //Assigns the matrix as the square size defined by n
        
@@ -143,7 +130,7 @@ public class UpperTriangularMatrix {
     
    
       
-    public String toString(){
+    public String toString(){  //Returns a string representation of the UpperTriangularMatrix this method is used on
        String output= "";
         
        int i = 0;        //i and o are iterating variables
@@ -181,7 +168,7 @@ public class UpperTriangularMatrix {
        return output;
     }
     
-    public int getDet(){    
+    public int getDet(){    //This method returns the determinant of the UpperTriangularMatrix the method is used on
         
     	int a = 0;
 		int tracker = 0; //Tracker used in the same way as getelement and setelement methods
@@ -196,30 +183,4 @@ public class UpperTriangularMatrix {
 		return determinant;
     }
     
-
-    
-    public double[] effSolve(double[] b) throws IllegalArgumentException{
-
-        /* fix the following and write your implementation */
-    	double[] sol = new double[10];              //I could not get this question
-    	int a = 0; 				
-    	int b = 0;									//What I tried to do was solve this the same way I'd do it by hand, by reducing all the diagonal values to 1 then clearing all the values above them
-    	int tracker = 0;
-    	int previous_tracker = 0;                   //but this code only does the first part and divides b, as well as the Ax by the values necessary to get a diagonal of ones
-    	int denominator = 0;
-    	for (a = 0; a <this.n-1; a++)
-    	{
-    		previous_tracker = tracker;
-    		tracker += this.n-a;
-    		
-    		denominator = this.array[previous_tracker];
-    		for (b = previous_tracker; b < tracker; b++)
-    		{
-    			this.array[b] = this.array[b]/denominator;
-    		}
-    	}
-
-       
-        return sol;  
-    }   
 }
